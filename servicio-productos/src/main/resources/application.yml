@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: servicio-productos
+  output:
+    ansi:
+      enabled: always # formatea la consola de arranque para mostrar colores como en IDE STS
+
+server:
+  port: 8001
