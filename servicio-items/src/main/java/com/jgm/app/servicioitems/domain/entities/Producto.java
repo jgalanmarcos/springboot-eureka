@@ -1,29 +1,18 @@
-package com.jgm.app.servicioproductos.domain.entities;
+package com.jgm.app.servicioitems.domain.entities;
 
-import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Date;
 
-@Entity
-@Table(name = "productos")
-public class Producto implements Serializable {
+public class Producto {
 
-    private static final long serialVersionUID = 6844446995234834746L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nombre;
 
     private Double precio;
 
-    @Column(name = "fecha_creacion")
-    @Temporal(TemporalType.DATE)
     private Date fechaCreacion;
 
-    @Transient
-    private Integer port; // será 0 cuando el puerto se establezca de manera aleatoria
+    private Integer port;
 
     /*
      * Getters & Setters

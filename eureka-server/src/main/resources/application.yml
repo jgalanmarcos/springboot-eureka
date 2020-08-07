@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: eureka-server
+  output:
+    ansi:
+      enabled: always # formatea la consola de arranque para mostrar colores como en el IDE STS
+
+server:
+  port: 8761
+
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

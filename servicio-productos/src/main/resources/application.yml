@@ -3,7 +3,14 @@ spring:
     name: servicio-productos
   output:
     ansi:
-      enabled: always # formatea la consola de arranque para mostrar colores como en IDE STS
+      enabled: always # formatea la consola de arranque para mostrar colores como en el IDE STS
 
 server:
-  port: 8001
+  port: ${PORT:0} # valor random
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}

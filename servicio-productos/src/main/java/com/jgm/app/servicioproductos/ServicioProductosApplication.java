@@ -2,12 +2,14 @@ package com.jgm.app.servicioproductos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
+@EnableEurekaClient
 @SpringBootApplication
 public class ServicioProductosApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ServicioProductosApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ServicioProductosApplication.class, args);
+    }
 
 }
