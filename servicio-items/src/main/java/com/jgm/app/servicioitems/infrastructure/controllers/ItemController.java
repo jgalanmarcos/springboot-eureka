@@ -42,7 +42,7 @@ public class ItemController {
         Item item = new Item();
         item.setProducto(producto);
         item.setCantidad(cantidad);
-        
+
         return item;
     }
 

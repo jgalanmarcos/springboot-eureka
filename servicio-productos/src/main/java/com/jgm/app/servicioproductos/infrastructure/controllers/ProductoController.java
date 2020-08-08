@@ -36,15 +36,22 @@ public class ProductoController {
     }
 
     @GetMapping("/{id}")
-    public Producto findById(@PathVariable Long id) throws Exception {
+    public Producto findById(@PathVariable Long id) {
         Producto producto = productoServiceI.findById(id);
 //        producto.setPort(Integer.parseInt(environment.getProperty("local.server.port"))); 1. Utilizando Environment
         producto.setPort(port);
 
-        // simular fallo para Hystrix en proyecto de items
+        // simular fallo para Hystrix con Excepcion
 //        boolean simulado = false;
 //        if (!simulado)
 //            throw new Exception("Error simulado para Hystrix");
+
+        // simular fallo para Hystrix y Zuul con Timeout
+//        try {
+//            Thread.sleep(2000L);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
         return producto;
     }

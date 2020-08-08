@@ -8,6 +8,7 @@ spring:
 server:
   port: ${PORT:0} # valor random
 
+# incluir eureka-server
 eureka:
   client:
     service-url:
