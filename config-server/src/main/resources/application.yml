@@ -5,7 +5,8 @@ spring:
     config:
       server:
         git:
-          uri: file:///E:/workspace/IntelliJ/Personal/SpringCloud/springboot-eureka/config # windows, linux = file:/...
+          uri: https://github.com/jgalanmarcos/springboot-eureka/tree/develop/config.git
+          # para repo local -> file:///E:/workspace/IntelliJ/Personal/SpringCloud/springboot-eureka/config # windows, linux = file:/...
   output:
     ansi:
       enabled: always # formatea la consola de arranque para mostrar colores como en el IDE STS
