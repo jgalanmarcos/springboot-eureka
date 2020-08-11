@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: file:///E:/workspace/IntelliJ/Personal/SpringCloud/springboot-eureka/config # windows, linux = file:/...
+  output:
+    ansi:
+      enabled: always # formatea la consola de arranque para mostrar colores como en el IDE STS
+
+server:
+  port: 8888

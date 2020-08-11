@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: servicio-items
+  cloud:
+    config:
+      uri: http://localhost:8888 # servidor de configuración
+  profiles:
+    active: dev
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        # refrescar TODOS endpoints actuator para refrescar los components
