@@ -1,4 +1,4 @@
-package com.jgm.app.servicioproductos.domain.entities;
+package com.jgm.app.serviciocommons.domain.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;

@@ -3,12 +3,14 @@ spring:
     name: servicio-items
   cloud:
     config:
-      uri: http://localhost:8888 # servidor de configuración
+      uri: http://localhost:8080
+      # servidor de configuración
   profiles:
     active: dev
+    # perfil: default -> servicio-items.properties, dev -> servicio-items-dev.properties, prod -> servicio-items-prod.properties ...
 management:
   endpoints:
     web:
       exposure:
         include: "*"
-        # refrescar TODOS endpoints actuator para refrescar los components
+        # refrescar TODOS los endpoints actuator para refrescar los Components

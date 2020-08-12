@@ -1,15 +1,19 @@
 spring:
   application:
     name: config-server
+    # nombre de aplicación
   cloud:
     config:
       server:
         git:
-          uri: https://github.com/jgalanmarcos/springboot-eureka/tree/develop/config.git
+          uri: https://github.com/jgalanmarcos/config.git
+          # puede ser directorio local o directorio en remoto (git, por ejemplo)
           # para repo local -> file:///E:/workspace/IntelliJ/Personal/SpringCloud/springboot-eureka/config # windows, linux = file:/...
   output:
     ansi:
-      enabled: always # formatea la consola de arranque para mostrar colores como en el IDE STS
+      enabled: always
+      # formatea la consola de arranque para mostrar colores como en el IDE STS
 
 server:
-  port: 8888
+  port: 8080
+  # puerto por defecto de la aplicación

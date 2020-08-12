@@ -1,20 +1,22 @@
 spring:
   application:
     name: zuul-server
+    # nombre de aplicación
   output:
     ansi:
-      enabled: always # formatea la consola de arranque para mostrar colores como en el IDE STS
+      enabled: always
+      # formatea la consola de arranque para mostrar colores como en el IDE STS
 
 server:
   port: 8090
+  # puerto por defecto de la aplicación
 
-# incluir eureka-server
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+      # registrarse en eureka-server
 
-# enrutamiento din�mico con zuul
 zuul:
   routes:
     productos:
@@ -23,16 +25,21 @@ zuul:
     items:
       service-id: servicio-items
       path: /api/servicio-items/**
+      # enrutamiento dinámico con zuul de los servicios que se conectan.
+      # se les antepone un prefijo a su URL seguido de la ruta normal de sus endpoints
 
-# Configurar timeout para Hystrix y Ribbon
-#hystrix:
-#  command:
-#    default:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 20000
-#
-#ribbon:
-#  ConnectTimeout: 3000
-#  ReadTimeout: 10000
+hystrix:
+command:
+  default:
+    execution:
+      isolation:
+        thread:
+          timeoutInMilliseconds: 20000
+  # configura timeout máximo de espera de Hystrix
+
+ribbon:
+  ConnectTimeout: 3000
+  ReadTimeout: 10000
+  # configura timeout máximo de espera de Ribbon
+
+  # la suma de los dos valores de ribbon debería ser algo inferior a la de hystrix

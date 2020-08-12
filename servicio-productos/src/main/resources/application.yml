@@ -3,10 +3,12 @@ spring:
     name: servicio-productos
   output:
     ansi:
-      enabled: always # formatea la consola de arranque para mostrar colores como en el IDE STS
+      enabled: always
+      # formatea la consola de arranque para mostrar colores como en el IDE STS
 
 server:
-  port: ${PORT:0} # valor random
+  port: ${PORT:0}
+  # puerto por defecto de la aplicación, random
 
 # incluir eureka-server
 eureka:
@@ -15,3 +17,4 @@ eureka:
       defaultZone: http://localhost:8761/eureka
   instance:
     instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+    # registrarse en eureka-server con el puerto aleatorios

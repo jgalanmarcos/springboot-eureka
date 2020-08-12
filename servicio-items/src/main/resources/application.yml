@@ -3,31 +3,39 @@ spring:
     name: servicio-items
   output:
     ansi:
-      enabled: always # formatea la consola de arranque para mostrar colores como en el IDE STS
+      enabled: always
+      # formatea la consola de arranque para mostrar colores como en el IDE STS
 
 server:
-  port: 8002
+  port: ${PORT:0}
+  # puerto por defecto de la aplicación
 
-# al incluir eureka-server ya se incluye ribbon, no es necesario
+# al añadir eureka-server ya se incluye ribbon, no es necesario
 #servicio-productos:
 #  ribbon:
 #    listOfServers: localhost:8001,localhost:9001
 
-# incluir eureka-server
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+      # registrarse en eureka-server
+    instance:
+      instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
+      # registrarse en eureka-server con el puerto aleatorios
 
-# Configurar timeout para Hystrix y Ribbon
-#hystrix:
-#  command:
-#    default:
-#      execution:
-#        isolation:
-#          thread:
-#            timeoutInMilliseconds: 20000
-#
-#ribbon:
-#  ConnectTimeout: 3000
-#  ReadTimeout: 10000
+  # hystrix:
+  #  command:
+  #    default:
+  #      execution:
+  #        isolation:
+  #          thread:
+  #            timeoutInMilliseconds: 20000
+  # configura timeout máximo de espera de Hystrix
+
+  #ribbon:
+  #  ConnectTimeout: 3000
+  #  ReadTimeout: 10000
+  # configura timeout máximo de espera de Ribbon
+
+  # la suma de los dos valores de ribbon debería ser algo inferior a la de hystrix

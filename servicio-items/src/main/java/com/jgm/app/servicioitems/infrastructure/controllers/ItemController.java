@@ -1,7 +1,7 @@
 package com.jgm.app.servicioitems.infrastructure.controllers;
 
+import com.jgm.app.serviciocommons.domain.entities.Producto;
 import com.jgm.app.servicioitems.domain.entities.Item;
-import com.jgm.app.servicioitems.domain.entities.Producto;
 import com.jgm.app.servicioitems.domain.services.ItemServiceI;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,16 +11,13 @@ import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RefreshScope
+@RefreshScope // para actuator
 @RestController
 @RequestMapping("/items")
 public class ItemController {
@@ -43,7 +40,7 @@ public class ItemController {
         return itemServiceI.findAll();
     }
 
-    // Saltar al método callBackError() si se produce un error
+    // Saltar al método callBackError(...) si se produce un error
     @HystrixCommand(fallbackMethod = "callBackError")
     @GetMapping("/{id}/cantidad/{cantidad}")
     public Item findById(@PathVariable Long id, @PathVariable Integer cantidad) {
@@ -75,6 +72,24 @@ public class ItemController {
         }
 
         return new ResponseEntity<>(map, HttpStatus.OK);
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Producto save(@RequestBody Producto producto) {
+        return itemServiceI.save(producto);
+    }
+
+    @PutMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Producto update(@RequestBody Producto producto) {
+        return itemServiceI.update(producto);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteById(@PathVariable Long id) {
+        itemServiceI.deleteById(id);
     }
 
 }

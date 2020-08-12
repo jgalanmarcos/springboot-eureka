@@ -1,9 +1,8 @@
 package com.jgm.app.servicioitems.domain.clients;
 
-import com.jgm.app.servicioitems.domain.entities.Producto;
+import com.jgm.app.serviciocommons.domain.entities.Producto;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -11,9 +10,18 @@ import java.util.List;
 public interface ProductoClienteFeign {
 
     @GetMapping("/productos")
-    public List<Producto> findAll();
+    List<Producto> findAll();
 
     @GetMapping("/productos/{id}")
-    public Producto findById(@PathVariable Long id);
+    Producto findById(@PathVariable Long id);
+
+    @PostMapping("/productos")
+    Producto save(@RequestBody Producto producto);
+
+    @PutMapping("/productos")
+    Producto update(@RequestBody Producto producto);
+
+    @DeleteMapping("/productos/{id}")
+    void deleteById(@PathVariable Long id);
 
 }

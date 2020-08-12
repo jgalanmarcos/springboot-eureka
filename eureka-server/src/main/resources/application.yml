@@ -1,14 +1,18 @@
 spring:
   application:
     name: eureka-server
+    # nombre de aplicación
   output:
     ansi:
-      enabled: always # formatea la consola de arranque para mostrar colores como en el IDE STS
+      enabled: always
+      # formatea la consola de arranque para mostrar colores como en el IDE STS
 
 server:
   port: 8761
+  # puerto por defecto de la aplicación
 
 eureka:
   client:
     register-with-eureka: false
     fetch-registry: false
+    # estas dos opciones se utilizan para que no se registre a él mismo, ya que el será el servidor

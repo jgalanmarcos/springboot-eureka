@@ -1,5 +1,7 @@
 package com.jgm.app.servicioitems.domain.entities;
 
+import com.jgm.app.serviciocommons.domain.entities.Producto;
+
 public class Item {
 
     private Producto producto;
